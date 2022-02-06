@@ -25,7 +25,7 @@ void showMyBottomSheet(
 }
 
 launchUrl(String Url) async {
-  await launch(Url);
+  await launch(Url, forceWebView: true);
 }
 
 class MyBottomSheetLayout extends StatelessWidget {

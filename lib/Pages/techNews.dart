@@ -1,12 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newz/Backend/fetchTechnews.dart';
+import 'package:newz/Backend/Value.dart';
+import 'package:newz/Backend/fetchNewsPages.dart';
 import 'package:newz/Components/searchbar.dart';
 import 'package:newz/Components/bottomsheet.dart';
 import 'package:newz/Utils/Colors.dart';
 import 'package:newz/Utils/Text.dart';
 import 'package:newz/Utils/constant.dart';
+import 'package:provider/provider.dart';
+import 'package:newz/Backend/Content.dart';
 
 class TechNews extends StatefulWidget {
   static const String id = 'TechNews';
@@ -20,7 +23,7 @@ class _TechNewsState extends State<TechNews> {
   @override
   void initState() {
     super.initState();
-    news = fetchTechNews();
+    news = fetchNewsPages();
   }
 
   Widget build(BuildContext context) {
@@ -33,7 +36,10 @@ class _TechNewsState extends State<TechNews> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              boldText(text: 'TECH', color: AppColors.primary, size: 20),
+              boldText(
+                  text: Provider.of<Value>(context).heading,
+                  color: AppColors.primary,
+                  size: 20),
               modifiedText(text: 'NEWS', color: AppColors.lightWhite, size: 20),
             ],
           ),
@@ -46,7 +52,7 @@ class _TechNewsState extends State<TechNews> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: FutureBuilder<List>(
-                future: fetchTechNews(),
+                future: fetchNewsPages(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:newz/Backend/Content.dart';
+import 'package:newz/Backend/Value.dart';
 import 'package:newz/Pages/techNews.dart';
 import 'package:newz/Utils/Colors.dart';
 import 'package:newz/Utils/Text.dart';
-import 'package:newz/Pages/GeneralNews.dart';
-import 'package:newz/Pages/buisnessNews.dart';
-import 'package:newz/Pages/HealthNews.dart';
-import 'package:newz/Pages/scienceNews.dart';
-import 'package:newz/Pages/SportsNews.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'HomeScreen';
@@ -42,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: 'TECHNOLOGY',
                     onPressed: () {
                       Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('TECH');
+                      Content.API(1);
                     }),
                 SizedBox(
                   width: 23.0,
@@ -51,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.pexels.com/photos/2526935/pexels-photo-2526935.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
                     text: 'GENERAL',
                     onPressed: () {
-                      Navigator.pushNamed(context, GeneralNews.id);
+                      Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('GENERAL');
+                      Content.API(2);
                     }),
               ],
             ),
@@ -65,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.pexels.com/photos/3259624/pexels-photo-3259624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
                     text: 'HEALTH',
                     onPressed: () {
-                      Navigator.pushNamed(context, HealthNews.id);
+                      Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('HEALTH');
+                      Content.API(3);
                     }),
                 SizedBox(
                   width: 23.0,
@@ -75,7 +82,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.pexels.com/photos/7648016/pexels-photo-7648016.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
                     text: 'BUSINESS',
                     onPressed: () {
-                      Navigator.pushNamed(context, BusinessNews.id);
+                      Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('BIZ');
+                      Content.API(4);
                     }),
               ],
             ),
@@ -89,7 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
                     text: 'SPORTS',
                     onPressed: () {
-                      Navigator.pushNamed(context, SportsNews.id);
+                      Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('SPORTS');
+                      Content.API(5);
                     }),
                 SizedBox(
                   width: 23.0,
@@ -99,7 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
                     text: 'SCIENCE',
                     onPressed: () {
-                      Navigator.pushNamed(context, ScienceNews.id);
+                      Navigator.pushNamed(context, TechNews.id);
+                      Provider.of<Value>(context, listen: false)
+                          .changeHeading('SCIENCE');
+                      Content.API(6);
                     }),
               ],
             ),
@@ -150,7 +166,7 @@ class NewsCategory extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                boldText(text: text, color: AppColors.lightWhite, size: 20.0)
+                boldText(text: text, color: AppColors.lightWhite, size: 18.0)
               ],
             )),
       ),

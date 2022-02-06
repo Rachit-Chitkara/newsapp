@@ -7,7 +7,7 @@ Future<List> fetchNews() async {
   final response = await http.get(
     Uri.parse(
         'https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=' +
-            Key.key +
+            APIKey.apikey +
             '&q=' +
             searchBar.searchcontroller.text),
   );
